@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body{
+    margin:0;
+    padding:0
+}
+::placeholder{
+    text-align: center;
+}
+article{
+    width:400px;
+    height:420px;
+    margin:0 auto;
+    background:#0d09f3;
+    margin-top:30px;
+    border-radius:30px
+}
+article header {
+    width:90%;
+    height:100px;
+    position:relative;
+    top:20px;
+    margin-left:5%;
+    border:2px solid rgb(206, 193, 12);
+    border-radius:20px;
+}
+article header input {
+    width:94%;
+    margin-left:3%;
+    height:78px;
+    margin-top:10px;
+    border-radius:20px;
+    border:0;
+    font-size:30px;
+    outline:none
+}
+article section {
+    width:95%;
+    height:271px;
+    border:2px solid rgb(218, 13, 13);
+    margin-left:2.1%;
+    margin-top:30px;
+    border-radius:20px;
+}
+article section .first {
+    margin-top:10px;
+}
+article section input {
+    font-size:39px;
+    padding-left:15px;
+    padding-right:15px;
+    border-radius:15px;
+    border:0;
+    background:rgb(22, 190, 86);
+    border: 1px solid #d42708;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin-left:18px; 
+    outline:none;
+}
+article section .slach {
+    padding-left:20px;
+    padding-right:20px;
+}
+article section .slach2 {
+    height:54px;
+    box-sizing:border-box;
+    padding-top:0px;
+    padding-bottom:3px;
+    position:relative;
+    bottom:2px;
+    padding-left:18px;
+    padding-right:18px;
+}
+article section .times {
+    padding-left:17.5px;
+    padding-right:17.5px
+}
+article section .zero {
+    padding-right:52px;
+    padding-left:53px;
+}
+article section .point {
+    padding-left:21px;
+    padding-right:21px;
+}
+article section .equal {
+    padding-right:50px;
+    padding-left:50px;
+}
+#clear {
+    padding-left:11px;
+    padding-right:11px;
+}
+#del1 {
+    padding-left: 11px;
+    padding-right: 11px;
+}
+
+</style>
+</head>
+<body>
+   <article>
+    <form>
+    <header>
+        <input type="num"id="type"autocomplete="off"placeholder="Enter Number">
+    </header> 
+    <section>
+        <div class="first">
+           <input type="button"value="7"class="give">
+           <input type="button"value="8"class="give">
+           <input type="button"value="9"class="give">
+           <input type="button"value="C"class="one"id="clear">
+         <input type="button"value="D"class="one"id="del1">
+        </div>
+        <div class="first">
+           <input type="button"value="4"class="give">
+           <input type="button"value="5"class="give">
+           <input type="button"value="6"class="give">
+           <input type="button"value="*"class="times give">
+           <input type="button"value="/"class="slach give">
+        </div>
+        <div class="first">
+           <input type="button"value="1"class="give">
+           <input type="button"value="2"class="give">
+           <input type="button"value="3"class="give">
+           <input type="button"value="+"class="give">
+           <input type="button"value="-"class="slach2 give">
+        </div>
+        <div class="first">
+           <input type="button"value="0"class="zero give">
+           <input type="button"value="."class="point give">
+           <input type="button"value="="class="equal"id="eq">
+        </div>
+    </section>
+    </form>
+</article>  
+<script>
+    var myType = document.getElementById("type"),
+    myBtn = document.getElementsByClassName("give"),
+    clear = document.getElementById("clear"),
+    equal = document.getElementById("eq"),
+    del = document.getElementById("del1"),
+    num = document.getElementById("test"),
+    i;
+for (i = 0; i < myBtn.length; i++) {
+    myBtn[i].onclick = function () {
+    "use strict";
+    myType.value += this.value;
+    }
+}
+equal.onclick = function () {
+    if(myType.value == "") {
+            myType.placeholder = "Enter Any Number"
+        } else {
+            myType.value = eval(myType.value);
+        }
+}
+clear.onclick = function del() {
+    "use strict";
+    myType.value = "";
+}
+del.onclick = function () {
+    "use strict";
+    myType.value = myType.value.substring(0,myType.value.length-1);
+}
+document.onkeydown = function (event) {
+    "use strict";
+    var click1 = event.keyCode,
+        click2 = String.fromCharCode(event.keyCode);
+    if(click1 === 187) {
+        if(myType.value == "") {
+            myType.placeholder = "Enter Any Number"
+        } else {
+            myType.value = eval(myType.value);
+        }
+    }
+    else if(click1 === 8) {
+        myType.value = myType.value.substring(0,myType.value.length-1);
+    }
+}
+</script>
+</body>
+</html>
